@@ -8,7 +8,7 @@ Requirements
 =======
 1. Install Ruby
   ```
-  $ sudo apt-get install ruby
+  $ sudo apt-get install build-essential ruby
   ```
   
 2. Install Sass
@@ -24,8 +24,7 @@ Start
 
 1. Run
 ```
-  $ npm install
-  $ bower install
+  $ make install
   $ grunt
   
 ```
