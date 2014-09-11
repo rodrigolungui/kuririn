@@ -1,2 +1,6 @@
 node_modules
 .sass-cache
+dependencies
+css/*
+css/build/*
+js/build/*

@@ -1,0 +1,10 @@
+{
+  "name": "Kuririn",
+  "version": "0.1.0",
+  "dependencies": {
+    "jQuery": "~1.11"
+  },
+  "devDependencies": {
+    "modularized-normalize-scss": "~3.0.1"
+  }
+}
