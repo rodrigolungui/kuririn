@@ -4,11 +4,22 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+    // Jshint para javascripts
     jshint: {
       files: ['js/*.js'],
       options: {
         reporter: require('jshint-stylish'),
         jshintrc: true
+      }
+    },
+
+    // Testes!
+    jasmine: {
+      app : {
+        src: 'js/*.js',
+        options: {
+          specs: 'test/js/spec.*.js'
+        }
       }
     },
 
@@ -108,6 +119,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   
   grunt.registerTask('default', ['connect:server', 'watch']);
 
