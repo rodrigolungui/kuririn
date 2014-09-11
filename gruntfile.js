@@ -45,6 +45,7 @@ module.exports = function(grunt) {
           ]
         }
       },
+
       uglified: {
         options: {
           banner: '/* generated on: <%= grunt.template.today("isoDateTime") %> */',
@@ -99,6 +100,17 @@ module.exports = function(grunt) {
       }
     },
 
+    imagemin: {
+      dynamic: {
+        files: {
+          expand: true,
+          cwd: '/img/',
+          src: ['*.gif', '*.png', '*.jpg'],
+          dest: '/img/dist/'
+        }
+      }
+    },
+
     // Task para servir a aplicação via node
     connect: {
       server: {
@@ -110,9 +122,7 @@ module.exports = function(grunt) {
         }
       }
     }
-
   });
-
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -120,6 +130,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   
   grunt.registerTask('default', ['connect:server', 'watch']);
 
