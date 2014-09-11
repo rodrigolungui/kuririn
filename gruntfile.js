@@ -12,6 +12,7 @@ module.exports = function(grunt) {
       }
     },
 
+    // Geração do build de javascript
     uglify: {
       beautified: {
         options: {
@@ -52,6 +53,7 @@ module.exports = function(grunt) {
       }
     },
 
+    // Rodar tasks predefinidas quando um arquivo é adicionado, alterado ou excluido.
     watch: {
       options: {
         interrupt: true,
@@ -73,6 +75,7 @@ module.exports = function(grunt) {
       }
     },
 
+    // Task para geração de estilos
     sass: {
       main: {
         options: {
@@ -83,15 +86,29 @@ module.exports = function(grunt) {
           'css/style.css' : 'scss/style.scss'
         }
       }
+    },
+
+    // Task para servir a aplicação via node
+    connect: {
+      server: {
+        options: {
+          hostname: '127.0.0.1',
+          port: 8888,
+          base: '.',
+          keepalive: false
+        }
+      }
     }
+
   });
+
+
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['connect:server', 'watch']);
 
-  grunt.registerMultiTask('build', function() {
-    grunt.task.run(this.data);
-  });
 };
