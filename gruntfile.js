@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
-      files: ['js/*.js'],
+      files: ['app/scripts/*.js'],
       options: {
         reporter: require('jshint-stylish'),
         jshintrc: true
@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 
     jasmine: {
       app : {
-        src: 'js/*.js',
+        src: 'app/scripts/*.js',
         options: {
           specs: 'test/js/spec.*.js'
         }
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['app/scripts/**/*.js'],
-        tasks: ['uglify']
+        tasks: ['jshint', 'jasmine', 'uglify']
       },
       grunt: {
         options: {
