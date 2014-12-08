@@ -5,19 +5,13 @@ Scaffolding for web projects
 
 
 Requirements
-=======
-1. Install Ruby
-  ```
-  $ sudo apt-get install build-essential ruby
-  ```
-  
-2. Install Sass
-  ```
-  $ sudo gem install sass
-  ```
-  
-3. Install [Node](http://nodejs.org/download)
+    
+1. Install [Node](http://nodejs.org/download)
+2. Install [Grunt](http://gruntjs.com/getting-started) 
+```
+  $ npm install -g grunt-cli
 
+```
 
 Start
 =======
@@ -32,4 +26,4 @@ Start
 Enjoy
 =======
 
-Your web project is served in [http://127.0.0.1:8888](http://127.0.0.1:8888) :)
+Your web project is served in [http://127.0.0.1:8888/app](http://127.0.0.1:8888/app) :)
