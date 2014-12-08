@@ -4,7 +4,6 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    // Jshint para javascripts
     jshint: {
       files: ['js/*.js'],
       options: {
@@ -13,7 +12,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Testes!
     jasmine: {
       app : {
         src: 'js/*.js',
@@ -23,7 +21,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Geração do build de javascript
     uglify: {
       beautified: {
         options: {
@@ -39,9 +36,9 @@ module.exports = function(grunt) {
           sourceMap: false
         },
         files: {
-          'js/build/build.js': [
-            'dependencies/jQuery/dist/jquery.js',
-            'js/app.js'
+          'app/build/js/build.js': [
+            'app/vendor/jQuery/dist/jquery.js',
+            'app/scripts/app.js'
           ]
         }
       },
@@ -60,23 +57,22 @@ module.exports = function(grunt) {
           sourceMap: true
         },
         files: {
-          'js/build/build.min.js': 'js/build/build.js'
+          'app/build/js/build.min.js': 'app/build/js/build.js'
         }
       }
     },
 
-    // Rodar tasks predefinidas quando um arquivo é adicionado, alterado ou excluido.
     watch: {
       options: {
         interrupt: true,
         spawn: false
       },
       css: {
-        files: ['scss/**/*.scss'],
+        files: ['app/styles/**/*.scss'],
         tasks: ['sass']
       },
       js: {
-        files: ['js/**/*.js'],
+        files: ['app/scripts/**/*.js'],
         tasks: ['uglify']
       },
       grunt: {
@@ -87,7 +83,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Task para geração de estilos
     sass: {
       main: {
         options: {
@@ -95,23 +90,11 @@ module.exports = function(grunt) {
           style: 'nested'
         },
         files: {
-          'css/style.css' : 'scss/style.scss'
+          'app/build/css/style.css' : 'app/styles/style.scss'
         }
       }
     },
 
-    imagemin: {
-      dynamic: {
-        files: {
-          expand: true,
-          cwd: '/img/',
-          src: ['*.gif', '*.png', '*.jpg'],
-          dest: '/img/dist/'
-        }
-      }
-    },
-
-    // Task para servir a aplicação via node
     connect: {
       server: {
         options: {
@@ -130,7 +113,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
   
   grunt.registerTask('default', ['connect:server', 'watch']);
 
