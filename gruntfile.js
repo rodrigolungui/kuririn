@@ -61,11 +61,11 @@ module.exports = function(grunt) {
     },
 
     sass: {
-      main: {
-        options: {
-          banner: '/* generated on: <%= grunt.template.today("isoDateTime") %> */',
-          style: 'nested'
-        },
+      options: {
+        style: 'nested',
+        sourceMap: true
+      },
+      dist: {
         files: {
           'app/build/css/style.css' : 'app/styles/style.scss'
         }
@@ -84,10 +84,10 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-concat');
