@@ -22,43 +22,20 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      beautified: {
+      main: {
         options: {
-          banner: '/* generated on: <%= grunt.template.today("isoDateTime") %> */',
-          beautify: true,
-          compress: {
-            drop_console: false,
-            drop_debugger: false
-          },
-          mangle: false,
-          preserveComments: false,
-          report: 'min',
-          sourceMap: false
+          beautify: false
         },
         files: {
-          'app/build/js/build.js': [
-            'app/vendor/jQuery/dist/jquery.js',
-            'app/scripts/app.js'
-          ]
+          'app/build/js/main.min.js': 'app/build/js/main.js'
         }
-      },
+      }
+    },
 
-      uglified: {
-        options: {
-          banner: '/* generated on: <%= grunt.template.today("isoDateTime") %> */',
-          beautify: false,
-          compress: {
-            drop_console: true,
-            drop_debugger: true
-          },
-          mangle: true,
-          preserveComments: false,
-          report: 'min',
-          sourceMap: true
-        },
-        files: {
-          'app/build/js/build.min.js': 'app/build/js/build.js'
-        }
+    concat: {
+      dist: {
+        src: ['app/scripts/app.js', 'app/vendor/jQuery/dist/jquery.min.js'],
+        dest: 'app/build/js/main.js'
       }
     },
 
@@ -73,7 +50,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['app/scripts/**/*.js'],
-        tasks: ['jshint', 'jasmine', 'uglify']
+        tasks: ['jshint', 'concat', 'uglify']
       },
       grunt: {
         options: {
@@ -113,6 +90,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   
   grunt.registerTask('default', ['connect:server', 'watch']);
 
