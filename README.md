@@ -26,4 +26,4 @@ Start
 Enjoy
 =======
 
-Your web project is served in [http://127.0.0.1:8888/app](http://127.0.0.1:8888/app) :)
+Your web project is served in [http://127.0.0.1:8888](http://127.0.0.1:8888) :)
