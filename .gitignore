@@ -2,3 +2,4 @@ node_modules
 .sass-cache
 app/vendor
 app/build/*
+.DS_Store
