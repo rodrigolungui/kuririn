@@ -52,6 +52,10 @@ module.exports = function(grunt) {
         files: ['app/scripts/**/*.js'],
         tasks: ['jshint', 'concat', 'uglify']
       },
+      img: {
+        files: ['app/images/**/*.{png,jpg,gif}'],
+        tasks: ['imagemin']
+      },
       grunt: {
         options: {
           reload: true
@@ -81,6 +85,17 @@ module.exports = function(grunt) {
           keepalive: false
         }
       }
+    },
+
+    imagemin: {
+      dynamic: {
+        files: [{
+          expand: true,
+          cwd: 'app/images',
+          src: ['**/*.{png,jpg,gif}'],
+          dest: 'app/build/images'
+        }]
+      }
     }
   });
 
@@ -91,6 +106,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   
   grunt.registerTask('default', ['connect:server', 'watch']);
   grunt.registerTask('test', ['jasmine']);
